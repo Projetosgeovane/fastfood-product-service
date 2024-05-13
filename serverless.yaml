@@ -5,13 +5,26 @@ plugins:
 provider:
   name: aws
   runtime: nodejs18.x
+  stage: dev
+  region: us-east-1
 functions:
   main:
     handler: dist/src/lambda.handler
     events:
       - http:
           method: ANY
+          cors: true
           path: /
       - http:
           method: ANY
-          path: '{proxy+}'
+          cors: true
+          path: "{proxy+}"
+package:
+  individually: true
+  exclude:
+    - .vscode
+    - .git
+    - thunder-tests
+    - undefined
+    - config
+    - tmp/**
