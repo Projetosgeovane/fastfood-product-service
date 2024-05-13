@@ -10,11 +10,13 @@ provider:
 functions:
   main:
     handler: dist/src/lambda.handler
+    timeout: 60
     events:
       - http:
           method: ANY
           cors: true
           path: /
+
       - http:
           method: ANY
           cors: true
