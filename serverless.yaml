@@ -1,12 +1,20 @@
-service: serverless-example
+service: fastfood-product-service
 
 plugins:
   - serverless-offline
+  - serverless-dotenv-plugin
+  - serverless-plugin-existing-cloudfront-lambda-edge
+
 provider:
   name: aws
   runtime: nodejs18.x
-  stage: dev
-  region: us-east-1
+  apiGateway:
+    restApiId: d0ewo299u4
+    restApiRootResourceId: cbegvswvsj
+  timeout: 60
+  environment:
+    DATABASE_URL: ${env:DATABASE_URL}
+
 functions:
   main:
     handler: dist/src/lambda.handler
@@ -15,18 +23,20 @@ functions:
       - http:
           method: ANY
           cors: true
-          path: /
+          path: "fprs/{proxy+}"
 
-      - http:
-          method: ANY
-          cors: true
-          path: "{proxy+}"
-package:
-  individually: true
-  exclude:
-    - .vscode
-    - .git
-    - thunder-tests
-    - undefined
-    - config
-    - tmp/**
+resources:
+  Resources:
+    ApiGatewayRestApi:
+      Type: 'AWS::ApiGateway::RestApi'
+      Properties:
+        Name: ExistingApiGateway
+        EndpointConfiguration:
+          Types:
+            - REGIONAL
+      DeletionPolicy: Retain
+
+custom:
+  existingApiGateway:
+    restApiId: d0ewo299u4
+    restApiRootResourceId: cbegvswvsj
