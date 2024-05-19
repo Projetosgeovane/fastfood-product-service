@@ -1,10 +1,16 @@
-import { BadRequestException, Body, ConflictException, Controller, Post } from "@nestjs/common";
-import { CreateProductDTO } from "../../dtos/create-product.dto";
-import { CreateProductUseCase } from "src/modules/product/domain/application/use-cases/product/create-product.use-case";
+import {
+  BadRequestException,
+  Body,
+  ConflictException,
+  Controller,
+  Post,
+} from '@nestjs/common';
+import { CreateProductDTO } from '../../dtos/create-product.dto';
+import { CreateProductUseCase } from 'src/modules/product/domain/application/use-cases/product/create-product.use-case';
 
-@Controller("product")
+@Controller('product')
 export class CreateProductController {
-  constructor(private readonly createProductUseCase: CreateProductUseCase) { }
+  constructor(private readonly createProductUseCase: CreateProductUseCase) {}
 
   @Post()
   async handle(@Body() body: CreateProductDTO) {

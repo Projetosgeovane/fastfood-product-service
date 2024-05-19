@@ -1,6 +1,6 @@
-import { Prisma, Product as PrismaProduct } from "@prisma/client";
-import { ProductEntity } from "../../../enterprise/product.entity";
-import { UniqueEntityID } from "@enablers/core/entities";
+import { Prisma, Product as PrismaProduct } from '@prisma/client';
+import { ProductEntity } from '../../../enterprise/product.entity';
+import { UniqueEntityID } from '@enablers/core/entities';
 
 export class PrismaProductMapper {
   static toDomain(raw: PrismaProduct): ProductEntity {
@@ -19,9 +19,7 @@ export class PrismaProductMapper {
     return product;
   }
 
-  static toPrisma(
-    product: ProductEntity,
-  ): Prisma.ProductUncheckedCreateInput {
+  static toPrisma(product: ProductEntity): Prisma.ProductUncheckedCreateInput {
     return {
       id: product.id.toValue(),
       name: product.name,

@@ -1,5 +1,5 @@
-import { Optional } from "@enablers/core/types";
-import { Entity, UniqueEntityID } from "../../../../../libs/core/src/entities";
+import { Optional } from '@enablers/core/types';
+import { Entity, UniqueEntityID } from '../../../../../libs/core/src/entities';
 
 interface ProductEntityProps {
   name: string;
@@ -13,7 +13,7 @@ interface ProductEntityProps {
 
 export class ProductEntity extends Entity<ProductEntityProps> {
   static instance(
-    props: Optional<ProductEntityProps, | 'createdAt'>,
+    props: Optional<ProductEntityProps, 'createdAt'>,
     id?: UniqueEntityID,
   ) {
     const product = new ProductEntity(
@@ -44,7 +44,6 @@ export class ProductEntity extends Entity<ProductEntityProps> {
     return this.props.price;
   }
 
-
   get createdAt() {
     return this.props.createdAt;
   }
@@ -68,5 +67,4 @@ export class ProductEntity extends Entity<ProductEntityProps> {
   set price(value: number) {
     this.props.price = value;
   }
-
 }

@@ -1,10 +1,17 @@
-import { BadRequestException, Body, Controller, NotFoundException, Param, Put } from "@nestjs/common";
-import { EditProductUseCase } from "src/modules/product/domain/application/use-cases/product/edit-product.use-case";
-import { EditProductDTO } from "../../dtos/edit-product.dto";
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  NotFoundException,
+  Param,
+  Put,
+} from '@nestjs/common';
+import { EditProductUseCase } from 'src/modules/product/domain/application/use-cases/product/edit-product.use-case';
+import { EditProductDTO } from '../../dtos/edit-product.dto';
 
 @Controller()
 export class EditProductController {
-  constructor(private readonly editProductUseCase: EditProductUseCase) { }
+  constructor(private readonly editProductUseCase: EditProductUseCase) {}
 
   @Put('product/:productId')
   async handle(@Param('productId') id: string, @Body() body: EditProductDTO) {
