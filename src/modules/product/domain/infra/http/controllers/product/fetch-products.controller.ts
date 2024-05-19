@@ -1,10 +1,16 @@
-import { BadRequestException, Controller, Get, ParseIntPipe, Query } from "@nestjs/common";
-import { ProductsPresenter } from "../../presenters/products.presenter";
-import { FetchProductsUseCase } from "src/modules/product/domain/application/use-cases/product/fetch-products.use-case";
+import {
+  BadRequestException,
+  Controller,
+  Get,
+  ParseIntPipe,
+  Query,
+} from '@nestjs/common';
+import { ProductsPresenter } from '../../presenters/products.presenter';
+import { FetchProductsUseCase } from 'src/modules/product/domain/application/use-cases/product/fetch-products.use-case';
 
-@Controller("product")
+@Controller('product')
 export class FetchProductsController {
-  constructor(private readonly fetchProductsUseCase: FetchProductsUseCase) { }
+  constructor(private readonly fetchProductsUseCase: FetchProductsUseCase) {}
 
   @Get()
   async handle(@Query('page', ParseIntPipe) page: number) {

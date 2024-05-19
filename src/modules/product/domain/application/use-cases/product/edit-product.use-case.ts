@@ -1,7 +1,7 @@
-import { ResourceNotFoundError } from "libs/core/src/errors";
-import { ProductRepository } from "../../repositories/product.repository";
-import { Injectable } from "@nestjs/common";
-import { Either, failure, success } from "libs/core/src/types";
+import { ResourceNotFoundError } from 'libs/core/src/errors';
+import { ProductRepository } from '../../repositories/product.repository';
+import { Injectable } from '@nestjs/common';
+import { Either, failure, success } from 'libs/core/src/types';
 
 interface EditProductUseCaseRequest {
   id: string;
@@ -13,7 +13,7 @@ interface EditProductUseCaseRequest {
 type EditProductUseCaseResponse = Either<ResourceNotFoundError, object>;
 @Injectable()
 export class EditProductUseCase {
-  constructor(private readonly productRepository: ProductRepository) { }
+  constructor(private readonly productRepository: ProductRepository) {}
 
   async execute({
     id,

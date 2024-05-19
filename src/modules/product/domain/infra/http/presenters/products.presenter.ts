@@ -1,4 +1,4 @@
-import { ProductEntity } from "../../../enterprise/product.entity";
+import { ProductEntity } from '../../../enterprise/product.entity';
 
 export class ProductsPresenter {
   static toHTTP(product: ProductEntity) {
