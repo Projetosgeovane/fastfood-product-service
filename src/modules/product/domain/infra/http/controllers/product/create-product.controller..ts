@@ -8,11 +8,11 @@ import {
 import { CreateProductDTO } from '../../dtos/create-product.dto';
 import { CreateProductUseCase } from 'src/modules/product/domain/application/use-cases/product/create-product.use-case';
 
-@Controller('product')
+@Controller('fprs')
 export class CreateProductController {
   constructor(private readonly createProductUseCase: CreateProductUseCase) {}
 
-  @Post()
+  @Post('product')
   async handle(@Body() body: CreateProductDTO) {
     const { name, description, price } = body;
 

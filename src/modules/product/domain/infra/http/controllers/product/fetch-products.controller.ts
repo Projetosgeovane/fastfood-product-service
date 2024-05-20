@@ -8,11 +8,11 @@ import {
 import { ProductsPresenter } from '../../presenters/products.presenter';
 import { FetchProductsUseCase } from 'src/modules/product/domain/application/use-cases/product/fetch-products.use-case';
 
-@Controller('product')
+@Controller('fprs')
 export class FetchProductsController {
   constructor(private readonly fetchProductsUseCase: FetchProductsUseCase) {}
 
-  @Get()
+  @Get('products')
   async handle(@Query('page', ParseIntPipe) page: number) {
     const result = await this.fetchProductsUseCase.execute({ page });
 
