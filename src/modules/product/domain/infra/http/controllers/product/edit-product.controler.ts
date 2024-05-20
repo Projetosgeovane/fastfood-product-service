@@ -9,7 +9,7 @@ import {
 import { EditProductUseCase } from 'src/modules/product/domain/application/use-cases/product/edit-product.use-case';
 import { EditProductDTO } from '../../dtos/edit-product.dto';
 
-@Controller()
+@Controller('fprs')
 export class EditProductController {
   constructor(private readonly editProductUseCase: EditProductUseCase) {}
 
